@@ -420,6 +420,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432387701}
   m_CullTransparentMesh: 1
+--- !u!1 &469233685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 469233687}
+  - component: {fileID: 469233686}
+  m_Layer: 0
+  m_Name: GameLifetimeScope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &469233686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469233685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d07a9113114e64a9f3df699390a7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects:
+  - {fileID: 1148102365}
+  triggerEn: {fileID: 1051375523}
+  playerController: {fileID: 1148102366}
+  enemyWay: {fileID: 1629875769}
+--- !u!4 &469233687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469233685}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 957.8088, y: 926.92505, z: -0.010927918}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +954,22 @@ MonoBehaviour:
   speed: 15
   rotationSpeed: 20
   Visual: {fileID: 1051375521}
+--- !u!1 &1148102365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1631598253865022184, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
+  m_PrefabInstance: {fileID: 6633160711135459945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1148102366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1116028989841395803, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
+  m_PrefabInstance: {fileID: 6633160711135459945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148102365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea58a9942bd190a4cbec60e3dda25b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1376729047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1262,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800549721}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 2
   simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 0
@@ -1259,7 +1327,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -1269,7 +1337,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.35
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1440,7 +1508,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.49
+      scalar: 3.44
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1764,7 +1832,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.05
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2644,11 +2712,11 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -20.27
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6163,19 +6231,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1170372700666217113, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.74102455
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1170372700666217113, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1170372700666217113, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1170372700666217113, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.67147803
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1170372700666217113, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6187,7 +6255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1170372700666217113, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -84.362
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1343490000085975279, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: looping
@@ -6281,6 +6349,10 @@ PrefabInstance:
       propertyPath: m_RenderAlignment
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4912019044417903754, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8628240599799774712, guid: 0ab5c381756b2b74fa5c067c5098defb, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -6307,3 +6379,4 @@ SceneRoots:
   - {fileID: 1051375522}
   - {fileID: 1376729051}
   - {fileID: 1019268237}
+  - {fileID: 469233687}

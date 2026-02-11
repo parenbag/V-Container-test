@@ -1,27 +1,35 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using VContainer;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     public float jumpForce = 6f;
-   
     public ParticleSystem trailParticles;
+    public TMP_Text scoreText; // Оставляем public для видимости в инспекторе
 
     Rigidbody2D rb;
-
     bool isAlive = true;
-
-
     private int score = 0;
-    public TMP_Text scoreText;
 
-    public TriggerEn trigCoin;
+    // Инжектируем зависимость через поле с атрибутом
+    [Inject]
+    private TriggerEn trigCoin;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
+        // Проверяем, что инъекция произошла
+        if (trigCoin == null)
+        {
+            Debug.LogError("TriggerEn не был инжектирован в PlayerController!");
+        }
     }
 
     void Update()
@@ -32,8 +40,6 @@ public class PlayerController : MonoBehaviour
         {
             Flap();
         }
-
-        
     }
 
     bool Tap()
@@ -55,20 +61,26 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("1");
+        Debug.Log("1 - OnTriggerEnter2D");
         if (other.CompareTag("Coin"))
         {
-            Debug.Log("2");
-            trigCoin.Visual.enabled = false;
-            score++;
-            scoreText.text = score.ToString();
+            Debug.Log("2 - Coin collected");
+            if (trigCoin != null && trigCoin.Visual != null)
+            {
+                trigCoin.Visual.enabled = false;
+                score++;
+                scoreText.text = score.ToString();
+                Debug.Log($"Score: {score}");
+            }
+            else
+            {
+                Debug.LogError("trigCoin или его Visual компонент равен null!");
+            }
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        
         if (other.gameObject.CompareTag("Enemy"))
         {
             ResetPlayer(new Vector3(-2.5f, 0f, 0f));
@@ -81,7 +93,6 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.identity;
         rb.linearVelocity = Vector2.zero;
         SceneManager.LoadScene(0);
-
         isAlive = true;
     }
 }
