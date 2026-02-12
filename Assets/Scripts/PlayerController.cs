@@ -8,13 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     public float jumpForce = 6f;
     public ParticleSystem trailParticles;
-    public TMP_Text scoreText; // Оставляем public для видимости в инспекторе
+    public TMP_Text scoreText; 
 
     Rigidbody2D rb;
     bool isAlive = true;
     private int score = 0;
 
-    // Инжектируем зависимость через поле с атрибутом
     [Inject]
     private TriggerEn trigCoin;
 
@@ -25,11 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // Проверяем, что инъекция произошла
-        if (trigCoin == null)
-        {
-            Debug.LogError("TriggerEn не был инжектирован в PlayerController!");
-        }
+        
     }
 
     void Update()
@@ -61,21 +56,17 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("1 - OnTriggerEnter2D");
+        Debug.Log("1");
         if (other.CompareTag("Coin"))
         {
-            Debug.Log("2 - Coin collected");
+            Debug.Log("2");
             if (trigCoin != null && trigCoin.Visual != null)
             {
                 trigCoin.Visual.enabled = false;
                 score++;
                 scoreText.text = score.ToString();
-                Debug.Log($"Score: {score}");
             }
-            else
-            {
-                Debug.LogError("trigCoin или его Visual компонент равен null!");
-            }
+            
         }
     }
 
@@ -95,4 +86,5 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(0);
         isAlive = true;
     }
+
 }
